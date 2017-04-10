@@ -1,0 +1,1264 @@
+\documentclass[10pt]{article}
+\usepackage{amssymb,amsmath}
+\usepackage{undertilde}
+\usepackage{array}
+\usepackage{fix-cm}  % for huge title
+%\usepackage{txfonts}
+
+% Europe paper
+%\usepackage[a1paper,margin=1cm]{geometry}
+
+%\usepackage{rmb_mathTypesetting}
+
+% This sets the size of the paper with a 1 inch margin
+%
+%  US PAPER SIZE
+%
+\usepackage[margin=1in]{geometry}
+\special{papersize=24in,36in}
+\setlength{\paperwidth}{24in}
+\setlength{\paperheight}{36in}
+\setlength{\textwidth}{22in}
+\setlength{\textheight}{34in}
+
+% end special formatting for paper size
+
+% mnemonic "Tensor Underline (Underline, Underline...)"
+\newcommand{\tu}[1]{\utilde{#1}}
+\newcommand{\tuu}[1]{\utilde{\utilde{#1}}}
+\newcommand{\tuuu}[1]{\utilde{\utilde{\utilde{#1}}}}
+\newcommand{\tuuuu}[1]{\utilde{\utilde{\utilde{\utilde{#1}}}}}
+
+\DeclareMathOperator{\myskew}{skw}
+\newcommand{\skw}[1]{\myskew(#1)}
+\DeclareMathOperator{\mysym}{sym}
+\newcommand{\sym}[1]{\mysym(#1)}
+
+\DeclareMathOperator{\mytrace}{tr}
+\newcommand{\tr}[1]{\mytrace(#1)}
+
+\newlength{\mysep}
+\setlength{\mysep}{1ex}
+
+\pagestyle{empty}
+
+
+
+
+\begin{document}
+
+\fontsize{13pt}{13pt}\selectfont
+%\fontsize{18pt}{24pt}\selectfont
+\begin{center}
+\begin{tabular}{l m{3in} c c c c m{5in}}
+\multicolumn{7}{c}{\fontsize{72pt}{72pt}\selectfont Continuum Mechanics Equation Sheet} \\
+
+%\\[-5ex]
+\\[72pt]  % space between title and headers
+Name & Purpose & Symbols & Tensor Notation & Indicial Notation & Units & Notes \\
+\\[-1ex]
+% #24 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Initial Particle Position
+&% Purpose
+-
+&% My Symbol
+$ \tu{X} $
+&% Equation
+$ \tu{X} $
+&% Equation
+$ X_{i} $
+&% Units
+$ length $
+&% Notes
+Given
+\\[1ex]
+
+% #24 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Current Particle Position
+&% Purpose
+-
+&% My Symbol
+$ \tu{x} $
+&% Equation
+$ \tu{x} = \tuu{F} \cdot \tu{X} + \tu{c}$
+&% Equation
+$ x_{i} = F_{ij} X_{j} + c_{i}$
+&% Units
+$ length $
+&% Notes
+The vector $\tu{c}$ is the displacement vector
+\\[1ex]
+
+% #24 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Deformation Gradient
+&% Purpose
+Describes local volume, orientation, and shape changes
+&% My Symbol
+$ \tuu{F} $
+&% Equation
+$ \tuu{F}=\frac{\partial \tu{x}}{\partial \tu{X}} = \tu{x}\overleftarrow{\nabla}_{0} = \tuu{R} \cdot \tuu{U} = \tuu{V} \cdot \tuu{R}$
+&% Equation
+$ F_{ij} =\frac{\partial x_{i}}{\partial X_{j}} = R_{ik} U_{kj} = V_{ik} R_{kj}$
+&% Units
+$ 1 $
+&% Notes
+Invertible; Work conjugate with $\tuu{P} \rightarrow \frac{1}{\rho_0}\tuu{P}\colon\tuu{\dot{F}}$
+\\[1ex]
+
+% #24 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Jacobian
+&% Purpose
+Describes local volume changes
+&% My Symbol
+$ J $
+&% Equation
+$ J = \det(\tuu{F}) = \det(\tuu{U}) = \det(\tuu{V}) = \frac{V}{V_{0}} = \frac{\rho_{0}}{\rho}$
+&% Equation
+-
+&% Units
+$ 1 $
+&% Notes
+Always positive nonzero; `Jacobian of the motion'
+\\[1ex]
+
+
+
+
+% #07 ----------------------------------------------------------------------
+%
+\hline
+\\[-1ex]
+% Name
+Rotation Tensor
+&% Purpose
+Describes local rotation
+&% My Symbol
+$ \tuu{R} $
+&% Equation
+$ \tuu{R} = \tuu{F} \cdot \tuu{U}^{-1} $
+&% Equation
+$ R_{ij} = F_{ik} U^{-1}_{kj} $
+&% Units
+$ 1 $
+&% Notes
+Orthogonal; Unique; Pure rotation ($\det(\tuu{R}) = 1$); `Polar rotation tensor'
+\\[1ex]
+
+
+
+
+% #07 ----------------------------------------------------------------------
+%
+\hline
+\\[-1ex]
+% Name
+Left stretch
+&% Purpose
+Spatial stretch measure
+&% My Symbol
+$ \tuu{V} $
+&% Equation
+$ \tuu{V} = \tuu{F} \cdot \tuu{R}^{T} $
+&% Equation
+$ V_{ij} = F_{ik} R_{jk} $
+&% Units
+$ 1 $
+&% Notes
+Symmetric; Positive Definite; Unique
+\\[1ex]
+
+
+
+% #07 ----------------------------------------------------------------------
+%
+\hline
+\\[-1ex]
+% Name
+Right stretch
+&% Purpose
+Reference stretch measure
+&% My Symbol
+$ \tuu{U} $
+&% Equation
+$ \tuu{U} = \tuu{R}^{T} \cdot \tuu{F} $
+&% Equation
+$ U_{ij} = R_{ki} F_{kj} $
+&% Units
+$ 1 $
+&% Notes
+Symmetric; Positive Definite; Unique; Unaffected by superimposed rotation; `Reference stretch'
+\\[1ex]
+
+% #07 ----------------------------------------------------------------------
+%
+\hline
+\\[-1ex]
+% Name
+Left Cauchy-Green Tensor
+&% Purpose
+Reference stretch measure
+&% My Symbol
+$ \tuu{B} $
+&% Equation
+$ \tuu{B} = \tuu{F} \cdot \tuu{F}^{T} = \tuu{V}^{2}$
+&% Equation
+$ B_{ij} = F_{ik} F_{jk} = V_{ik} V_{kj}$
+&% Units
+$ 1 $
+&% Notes
+Symmetric; Positive Definite; `Finger Tensor'; Inverse called `Cauchy deformation tensor' $\tilde{\tuu{B}}$; `Spatial stretch'
+\\[1ex]
+
+
+
+
+% #08 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Right Cauchy-Green Tensor
+&% Purpose
+Spatial stretch measure
+&% My Symbol
+$ \tuu{C} $
+&% Equation
+$ \tuu{C} = \tuu{F}^{T} \cdot \tuu{F} = \tuu{U}^{2}$
+&% Equation
+$ C_{ij} = F_{ki} F_{kj} = U_{ik} U_{kj}$
+&% Units
+$ 1 $
+&% Notes
+Symmetric; Positive Definite; Unaffected by superimposed rotation
+\\[1ex]
+
+
+% #09 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Euler Strain
+&% Purpose
+Measure of spatial strain
+&% My Symbol
+$ \tuu{e} $
+&% Equation
+$ \tuu{e} = \frac{1}{2}(\tuu{I}-\tuu{B}^{-1})=\frac{1}{2}(\tuu{I}-\tuu{F}^{-T}\cdot\tuu{F}^{-1}) $
+&% Equation
+$ e_{ij} = \frac{1}{2}(\delta_{ij} - B^{-1}_{ij}) = \frac{1}{2}(\delta_{ij} - F^{-1}_{ki} F^{-1}_{kj}) $
+&% Units
+$ 1 $
+&% Notes
+Symmetric; Seth-Hill parameter $\kappa = -2$; `Alamansi-Hamel strain tensor'; `Eulerian strain tensor'
+\\[1ex]
+
+% #09 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Logarithmic Strain
+&% Purpose
+Measure of reference strain
+&% My Symbol
+$ \tuu{\varepsilon} $
+&% Equation
+$ \tuu{\varepsilon} = \ln(\tuu{U}) $
+&% Equation
+-
+&% Units
+$ 1 $
+&% Notes
+Symmetric; Seth-Hill parameter $\kappa \rightarrow 0$; `Hencky strain tensor'
+\\[1ex]
+
+
+
+
+
+% #10 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Lagrange Strain
+&% Purpose
+Measure of reference strain
+&% My Symbol
+$ \tuu{E} $, $ \tuu{\varepsilon}$
+&% Equation
+$ \tuu{E} = \frac{1}{2}(\tuu{C}-\tuu{I}) = \frac{1}{2}(\tuu{F}^{T}\cdot\tuu{F}-\tuu{I}) $
+&% Equation
+$ E_{ij} = \frac{1}{2}(C_{ij} - I_{ij}) = \frac{1}{2}(F_{ki} F_{kj} - I_{ij}) $
+&% Units
+$ 1 $
+&% Notes
+Symmetric; Seth-Hill parameter $\kappa = 2$; Unaffected by superimposed rotation; Work conjugate with $\tuu{S} \rightarrow \frac{1}{\rho_0}\tuu{S}\colon\dot{\tuu{E}}$; `Green strain tensor'; `Green-St. Venant strain tensor'
+\\[1ex]
+
+% #13 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Velocity Gradient
+&% Purpose
+-
+&% My Symbol
+$ \tuu{L} $
+&% Equation
+$ \tuu{L} = \tu{v}\overleftarrow{\nabla}_{x} = \left(\overrightarrow{\nabla}_{x}\tu{v}\right)^{T} = \frac{\partial \tu{v}}{\partial \tu{x}}= \tuu{\dot{F}}\cdot\tuu{F}^{-1} $
+&% Equation
+$ L_{ij} = \frac{\partial v_{i}}{\partial x_{j}} = \dot{F}_{ik} F^{-1}_{kj} $
+&% Units
+$ \frac{1}{Second} $
+&% Notes
+`Spatial velocity gradient'
+\\[1ex]
+
+
+% #12 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Symmetric Part of the Velocity Gradient
+&% Purpose
+Strain rate approximation
+&% My Symbol
+$ \utilde{\utilde{D}} $
+&% Equation
+$ \utilde{\utilde{D}} = \frac{1}{2}(\utilde{\utilde{L}}+\utilde{\utilde{L}}^{T}) = \sym{\utilde{\utilde{L}}} $
+&% Equation
+$ D_{ij} = \frac{1}{2}(L_{ij} + L_{ji}) = \frac{1}{2}(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) L_{kl}$
+&% Units
+$ 1 $
+&% Notes
+Generally not a true rate; If $\tuu{U}(t)$ is diagonal, $\tuu{D} = \tuu{\dot{\varepsilon}}^{log}$; Work conjugate with $\tuu{\sigma} \rightarrow \frac{1}{\rho}\tuu{\sigma}\colon\tuu{D}$; `Deformation rate'
+\\[1ex]
+
+% #11 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Vorticity Tensor
+&% Purpose
+Measure of `tumble'
+&% My Symbol
+$ \tuu{W} $
+&% Equation
+$ \tuu{W} = \frac{1}{2}(\tuu{L} - \tuu{L}^{T}) = \skw{\tuu{L}} $
+&% Equation
+$ W_{ij} = \frac{1}{2}(L_{ij} - L_{ji}) = \frac{1}{2}(\delta_{ik}\delta_{jl} - \delta_{il}\delta_{jk})\tuu{L}_{kl}$
+&% Units
+$ \frac{1}{time} $
+&% Notes
+Skew; `Spin Tensor'
+\\[1ex]
+
+
+% #14 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Vorticity Vector
+&% Purpose
+Measure of `tumble'
+&% My Symbol
+$ \tu{w} $
+&% Equation
+$ \tu{w} = -\frac{1}{2}\tuuu{\varepsilon}\colon\tuu{W} = \frac{1}{2}\overrightarrow{\nabla} \times \tu{v}$
+&% Equation
+$ w_{i} = -\frac{1}{2} \varepsilon_{ijk} W_{jk} = \frac{1}{2} \varepsilon_{ijk} \frac{\partial v_{k}}{\partial x_{j}}$
+&% Units
+$ 1 $
+&% Notes
+Axial vector of $\tuu{W} \rightarrow W_{ij} = -\varepsilon_{ijk} w_{k}$
+\\[1ex]
+
+
+% #04 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Cauchy Stress
+&% Purpose
+Current force per unit deformed area
+&% My Symbol
+$ \tuu{\sigma} $
+&% Equation
+-
+&% Equation
+-
+&% Units
+$ \frac{Force}{Area} $
+&% Notes
+Symmetric; Work conjugate with $\tuu{D} \rightarrow \frac{1}{\rho}\tuu{\sigma}\colon\tuu{D}$; Defined by $\tu{t} = \tuu{\sigma}\cdot\tu{n}$
+\\[1ex]
+
+
+% #04 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+First Piola-Kirchhoff Stress
+&% Purpose
+Current force per unit undeformed area
+&% My Symbol
+$ \tuu{P} $, $\tuu{t}$
+&% Equation
+$ \tuu{P} = \tuu{\sigma}\cdot\tuu{F}^{c}  = J \tuu{\sigma}\cdot\tuu{F}^{-T}$
+&% Equation
+$ P_{ij} = \sigma_{ik} F^{c}_{kj}  = J \sigma_{ik} F^{-1}_{jk}$
+&% Units
+$ \frac{Force}{Area} $
+&% Notes
+`Nominal stress tensor'; `Lagrangian stress tensor'; Work conjugate with $\tuu{F} \rightarrow \frac{1}{\rho_0}\tuu{P}\colon\dot{\tuu{F}}$; Solve using Nanson's Relation ($d\tu{A}=\tuu{F}^{c}\cdot d\tu{A}_{0})$)
+\\[1ex]
+
+
+
+% #05 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Second Piola-Kirchhoff Stress
+&% Purpose
+Transformed (unrotated) current force per unit undeformed area
+&% My Symbol
+$ \tuu{S} $
+&% Equation
+$ \tuu{S} = \tuu{F}^{-1}\cdot\tuu{P} = J \tuu{F}^{-1} \cdot \tuu{\sigma} \cdot \tuu{F}^{-T}$
+&% Equation
+$ S_{ij} = F^{-1}_{ik} P_{kj} = J F^{-1}_{ik} \sigma_{kl} F^{-T}_{lj}$
+&% Units
+$ \frac{Force}{Area} $
+&% Notes
+Symmetric; Work conjugate with $\tuu{E} \rightarrow \frac{1}{\rho_0}\tuu{S}\colon\dot{\tuu{E}}$; Unaffected by superimposed rotation
+\\[1ex]
+
+
+
+% #15 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Stiffness
+&% Purpose
+Constitutive relation
+&% My Symbol
+$ \tuuuu{C}, \tuuuu{\mathbb{E}} $
+&% Equation
+$ \tuuuu{C} = \frac{\partial \tuu{\sigma}}{\partial \tuu{\varepsilon}} $
+&% Equation
+$ C_{ijkl} = \frac{\partial \sigma_{ij}}{\partial \varepsilon_{kl}} $
+&% Units
+$ \frac{Force}{Area} $
+&% Notes
+For symmetric $\tuu{\sigma}$ and $\tuu{\varepsilon}$, $\tuuuu{C}$ is minor symmetric; `Elastic tangent stiffness'
+\\[1ex]
+% #16 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Compliance
+&% Purpose
+Constitutive relation
+&% My Symbol
+$ \tuuuu{S}, \tuuuu{H}$
+&% Equation
+$ \tuuuu{S} = \frac{\partial \tuu{\varepsilon}}{\partial \tuu{\sigma}} $
+&% Equation
+$ S_{ijkl} = \frac{\partial \varepsilon_{ij}}{\partial \sigma_{kl}} $
+&% Units
+$ \frac{Area}{Force} $
+&% Notes
+For symmetric $\tuu{\sigma}$ and $\tuu{\varepsilon}$, $\tuuuu{S}$ is minor symmetric
+\\[1ex]
+% #17 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Specific Kinetic Energy
+&% Purpose
+-
+&% My Symbol
+$ k $
+&% Equation
+$ k =\frac{1}{2}\utilde{v}\cdot\utilde{v}$
+&% Equation
+$ k =\frac{1}{2}\utilde{v}\cdot\utilde{v}$
+&% Units
+$ \frac{Length^{2}}{Second^{2}} $
+%&% Derivation
+%-
+&% Notes
+$ \utilde{v}\cdot\utilde{a}=\utilde{v}\cdot\dot{\utilde{v}}=\dot{k} $
+\\[1ex]
+% #18 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Isotropic Stress
+&% Purpose
+Measure of `average' stress
+&% My Symbol
+$ iso\utilde{\utilde{A}} $
+&% Equation
+$ iso\utilde{\utilde{A}} = \frac{1}{3}tr(\utilde{\utilde{A}}) $
+&% Equation
+$ iso\utilde{\utilde{A}} = \frac{1}{3}tr(\utilde{\utilde{A}}) $
+&% Units
+$ - $
+%&% Derivation
+%$ \utilde{\utilde{A}} = iso\utilde{\utilde{A}} + dev\utilde{\utilde{A}} $
+&% Notes
+A.K.A. `Spherical Stress', `Hydrostatic Stress'
+\\[1ex]
+% #19 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Deviatoric Stress
+&% Purpose
+Measure of `shear' stress
+&% My Symbol
+$ dev\utilde{\utilde{A}} $
+&% Equation
+$ dev\utilde{\utilde{A}} =  \utilde{\utilde{A}}-iso\utilde{\utilde{A}} = \utilde{\utilde{A}}-\frac{1}{3}tr\utilde{\utilde{A}} $
+&% Equation
+$ dev\utilde{\utilde{A}} =  \utilde{\utilde{A}}-iso\utilde{\utilde{A}} = \utilde{\utilde{A}}-\frac{1}{3}tr\utilde{\utilde{A}} $
+&% Units
+$ - $
+%&% Derivation
+%$ \utilde{\utilde{A}} = iso\utilde{\utilde{A}} + dev\utilde{\utilde{A}} $
+&% Notes
+-
+\\[1ex]
+% #20 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Spherical Deformation
+&% Purpose
+-
+&% My Symbol
+-
+&% Equation
+$ \utilde{\utilde{F}}=\alpha\utilde{\utilde{I}} $
+&% Equation
+$ \utilde{\utilde{F}}=\alpha\utilde{\utilde{I}} $
+&% Units
+-
+%&% Derivation
+%
+&% Notes
+Volume change without shape change
+\\[1ex]
+% #21 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Isochoric Deformation
+&% Purpose
+-
+&% My Symbol
+-
+&% Equation
+$ J = det\utilde{\utilde{F}} = 1 $
+&% Equation
+$ J = det\utilde{\utilde{F}} = 1 $
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+Shape change without volume change
+\\[1ex]
+% #22 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Hooke's Law
+&% Purpose
+Relate stress to strain
+&% My Symbol
+-
+&% Equation
+$ \utilde{\utilde{\sigma}} = \lambda(tr\utilde{\utilde{\varepsilon}})\utilde{\utilde{I}} + 2G\utilde{\utilde{\varepsilon}} $
+&% Equation
+$ \utilde{\utilde{\sigma}} = \lambda(tr\utilde{\utilde{\varepsilon}})\utilde{\utilde{I}} + 2G\utilde{\utilde{\varepsilon}} $
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+$\lambda =$ Lam\'{e} constant, $G =$ Shear modulus, $K = \lambda + \frac{2}{3}G =$ Bulk modulus
+\\[1ex]
+% #23 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Reynolds Transport
+&% Purpose
+-
+&% My Symbol
+-
+&% Equation
+$ \frac{D}{Dt}\int\limits_{\Omega}f\rho dV=\int\limits_{\Omega}\dot{f}\rho dV $
+&% Equation
+$ \frac{D}{Dt}\int\limits_{\Omega}f\rho dV=\int\limits_{\Omega}\dot{f}\rho dV $
+&% Units
+-
+%&% Derivation
+%See Leibniz Theorem
+&% Notes
+$ \dot{\phi} = \frac{D\phi}{Dt} = (\frac{\partial \phi}{\partial t})_{\utilde{X}} $ Lagrange rate
+\\[1ex]
+% #26 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Material Velocity (Lagrangian)
+&% Purpose
+-
+&% My Symbol
+$ \utilde{v}(\utilde{X},t) $
+&% Equation
+$ \utilde{v} =(\frac{\partial \utilde{x}}{\partial t})_{\utilde{X}} $
+&% Equation
+$ \utilde{v} =(\frac{\partial \utilde{x}}{\partial t})_{\utilde{X}} $
+&% Units
+$ \frac{Length}{Second} $
+%&% Derivation
+%-
+&% Notes
+This is the Lagrangian (particle tracking) velocity $\utilde{v}(\utilde{X},t)$
+\\[1ex]
+% #27 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Material Velocity (Eulerian)
+&% Purpose
+-
+&% My Symbol
+$ \utilde{v}(\utilde{x},t) $
+&% Equation
+$ \utilde{v} =(\frac{\partial \utilde{x}}{\partial t})_{\utilde{X}}$, Substitute $\utilde{X}(\utilde{x},t)$ for $\utilde{X}$
+&% Equation
+$ \utilde{v} =(\frac{\partial \utilde{x}}{\partial t})_{\utilde{X}}$, Substitute $\utilde{X}(\utilde{x},t)$ for $\utilde{X}$
+&% Units
+$ \frac{Length}{Second} $
+%&% Derivation
+%-
+&% Notes
+This is Eulerian (stationary observer) velocity $\utilde{v}(\utilde{x},t)$
+\\[1ex]
+% #28 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Reference Backward Gradient
+&% Purpose
+Alternate method to find $\dot{\utilde{\utilde{F}}}$
+&% My Symbol
+$ \utilde{v}\overleftarrow{\nabla_{0}} $
+&% Equation
+$ \utilde{v}\overleftarrow{\nabla_{0}} = (\frac{\partial \utilde{v}}{\partial \utilde{X}})_{t}=\dot{\utilde{\utilde{F}}} $
+&% Equation
+$ \utilde{v}\overleftarrow{\nabla_{0}} = (\frac{\partial \utilde{v}}{\partial \utilde{X}})_{t}=\dot{\utilde{\utilde{F}}} $
+&% Units
+$ \frac{1}{Second} $
+%&% Derivation
+%
+&% Notes
+Use the Lagrange material velocity $\utilde{v}(\utilde{X},t)$
+\\[1ex]
+% #29 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Spatial Backward Gradient
+&% Purpose
+Alternate method to find the velocity gradient ($\utilde{\utilde{L}}$)
+&% My Symbol
+$ \utilde{v}\overleftarrow{\nabla} $
+&% Equation
+$ \utilde{v}\overleftarrow{\nabla} =(\frac{\partial \utilde{v}}{\partial \utilde{x}})_{t}=\utilde{\utilde{L}} $
+&% Equation
+$ \utilde{v}\overleftarrow{\nabla} =(\frac{\partial \utilde{v}}{\partial \utilde{x}})_{t}=\utilde{\utilde{L}} $
+&% Units
+$ \frac{1}{Second} $
+%&% Derivation
+%-
+&% Notes
+Use the Lagrange material velocity $\utilde{v}(\utilde{X},t)$
+\\[1ex]
+% #30 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Polar Decomposition
+&% Purpose
+Decomp $\utilde{\utilde{F}}$ into a `stretch' and `rotate'
+&% My Symbol
+-
+&% Equation
+$ \utilde{\utilde{F}}=\utilde{\utilde{R}}\cdot\utilde{\utilde{U}}=\utilde{\utilde{V}}\cdot\utilde{\utilde{R}} $
+&% Equation
+$ \utilde{\utilde{F}}=\utilde{\utilde{R}}\cdot\utilde{\utilde{U}}=\utilde{\utilde{V}}\cdot\utilde{\utilde{R}} $
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+ 
+\\[1ex]
+% #31a----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Right Stretch Tensor
+&% Purpose
+Used in polar decomposition
+&% My Symbol
+$ \utilde{\utilde{U}} $
+&% Equation
+$ \utilde{\utilde{U}} =\utilde{\utilde{C}}^{\frac{1}{2}}$
+&% Equation
+$ \utilde{\utilde{U}} =\utilde{\utilde{C}}^{\frac{1}{2}}$
+&% Units
+$ 1 $
+%&% Derivation
+%-
+&% Notes
+$\utilde{\utilde{U}}=\utilde{\utilde{R}}^{T}\cdot\utilde{\utilde{F}}$
+\\[1ex]
+% #31b----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Left stretch tensor
+&% Purpose
+Used in polar decomposition
+&% My Symbol
+$ \utilde{\utilde{V}} $
+&% Equation
+$ \utilde{\utilde{V}} =\utilde{\utilde{B}}^{\frac{1}{2}}$
+&% Equation
+$ \utilde{\utilde{V}} =\utilde{\utilde{B}}^{\frac{1}{2}}$
+&% Units
+$ 1 $
+%&% Derivation
+%-
+&% Notes
+$\utilde{\utilde{V}}=\utilde{\utilde{F}}\cdot\utilde{\utilde{R}}^{T}$
+\\[1ex]
+
+
+
+
+% #31 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+
+&% Purpose
+
+&% My Symbol
+$ \utilde{\utilde{H}} $
+&% Equation
+$ \utilde{\utilde{H}} = \utilde{u}\overleftarrow{\nabla_{0}}=(\frac{\partial \utilde{u}}{\partial \utilde{X}})_{t}$
+&% Equation
+$ \utilde{\utilde{H}} = \utilde{u}\overleftarrow{\nabla_{0}}=(\frac{\partial \utilde{u}}{\partial \utilde{X}})_{t}$
+&% Units
+$ 1 $
+%&% Derivation
+%-
+&% Notes
+$\utilde{u}=\utilde{x}-\utilde{X}$, $\utilde{\utilde{E}}=\frac{1}{2}(\utilde{\utilde{H}}+\utilde{\utilde{H}}^{T}+\utilde{\utilde{H}}^{T}\cdot\utilde{\utilde{H}})$
+\\[1ex]
+% #32 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+
+&% Purpose
+
+&% My Symbol
+$ \utilde{\utilde{h}} $
+&% Equation
+$ \utilde{\utilde{h}} = \utilde{u}\overleftarrow{\nabla}=(\frac{\partial \utilde{u}}{\partial \utilde{x}})_{t}$
+&% Equation
+$ \utilde{\utilde{h}} = \utilde{u}\overleftarrow{\nabla}=(\frac{\partial \utilde{u}}{\partial \utilde{x}})_{t}$
+&% Units
+$ 1 $
+%&% Derivation
+%-
+&% Notes
+$\utilde{u}=\utilde{x}-\utilde{X}$, $\utilde{\utilde{e}}=\frac{1}{2}(\utilde{\utilde{h}}+\utilde{\utilde{h}}^{T}-\utilde{\utilde{h}}^{T}\cdot\utilde{\utilde{h}})$
+\\[1ex]
+% #33 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Spatial Gradient
+&% Purpose
+S.G. of scalar field
+&% My Symbol
+$ \overrightarrow{\nabla}\phi $
+&% Equation
+$ \overrightarrow{\nabla}\phi = \frac{\partial \phi}{\partial \utilde{x}} $
+&% Equation
+$ \overrightarrow{\nabla}\phi = \frac{\partial \phi}{\partial \utilde{x}} $
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+ 
+\\[1ex]
+% #34 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Spatial Gradient
+&% Purpose
+S.G. of vector field
+&% My Symbol
+$ \overrightarrow{\nabla}\utilde{\phi}$,   $\utilde{\phi}\overleftarrow{\nabla}$
+&% Equation
+$(\overrightarrow{\nabla}\utilde{\phi})_{ij} = \frac{\partial \phi_{j}}{\partial x_{i}}$, $(\utilde{\phi}\overleftarrow{\nabla})_{ij} = \frac{\partial \phi_{i}}{\partial x_{j}}$
+&% Equation
+$(\overrightarrow{\nabla}\utilde{\phi})_{ij} = \frac{\partial \phi_{j}}{\partial x_{i}}$, $(\utilde{\phi}\overleftarrow{\nabla})_{ij} = \frac{\partial \phi_{i}}{\partial x_{j}}$
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+$\overrightarrow{\nabla}r = \frac{\utilde{x}}{r}$,   $\overrightarrow{\nabla}\utilde{\phi}=(\utilde{\phi}\overleftarrow{\nabla})^{T}$
+\\[1ex]
+% #35 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Divergence
+&% Purpose
+Measures magnitude of outward flux of a vector field
+&% My Symbol
+$ \overrightarrow{\nabla}\cdot\utilde{\phi} = \utilde{\phi}\overleftarrow{\nabla} $
+&% Equation
+$ (\overrightarrow{\nabla}\cdot\utilde{\phi}) = (\utilde{\phi}\overleftarrow{\nabla}) = \frac{\partial \phi_{i}}{\partial x_{i}} $
+&% Equation
+$ (\overrightarrow{\nabla}\cdot\utilde{\phi}) = (\utilde{\phi}\overleftarrow{\nabla}) = \frac{\partial \phi_{i}}{\partial x_{i}} $
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+
+\\[1ex]
+% #36 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Curl
+&% Purpose
+Describes the `rotation' of a vector field
+&% My Symbol
+$ \overrightarrow{\nabla}\times\utilde{\phi} $
+&% Equation
+$ (\overrightarrow{\nabla}\times\utilde{\phi})_{i} =\varepsilon_{ijk}\frac{\partial \phi_{k}}{\partial x_{j}}$,  $(\utilde{\phi}\times\overleftarrow{\nabla})_{i}=\varepsilon_{ijk}\frac{\partial \phi_{j}}{\partial x_{k}}$
+&% Equation
+$ (\overrightarrow{\nabla}\times\utilde{\phi})_{i} =\varepsilon_{ijk}\frac{\partial \phi_{k}}{\partial x_{j}}$,  $(\utilde{\phi}\times\overleftarrow{\nabla})_{i}=\varepsilon_{ijk}\frac{\partial \phi_{j}}{\partial x_{k}}$
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+$ \overrightarrow{\nabla}\times\utilde{\phi} =-(\utilde{\phi}\times\overleftarrow{\nabla}) $
+\\[1ex]
+% #37 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Direction Cosine Matrix
+&% Purpose
+Basis transformation
+&% My Symbol
+$ \utilde{\utilde{L}} $
+&% Equation
+$ L_{ij}=e_{i}^{A}e_{j}^{B} = \cos\theta_{ij}^{AB} $
+&% Equation
+$ L_{ij}=e_{i}^{A}e_{j}^{B} = \cos\theta_{ij}^{AB} $
+&% Units
+$ 1 $
+%&% Derivation
+%-
+&% Notes
+$\utilde{\utilde{L}}=\utilde{\utilde{L}}^{T}$
+\\[1ex]
+% #38 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Cayley-Hamilton Theorem
+&% Purpose
+-
+&% My Symbol
+-
+&% Equation
+$\utilde{\utilde{A}}^{3}-I_{1}\utilde{\utilde{A}}^{2}+I_{2}\utilde{\utilde{A}}-I_{3} \utilde{\utilde{I}}= \utilde{\utilde{0}} $
+&% Equation
+$A_{ik} A_{kl} A_{lj} - I_1 A_{ik} A_{kj} + I_2 A_{ij} - I_3 \delta_{ij} = 0_{ij}   $
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+$\lambda^{3}-I_{1}\lambda^{2}+I_{2}\lambda-I_{3}=0$
+\\[1ex]
+% #39 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Internal Dissipation
+&% Purpose
+-
+&% My Symbol
+$ \mathcal{D} $
+&% Equation
+$ \mathcal{D} = \mathcal{P}_{s} + \theta\dot{\eta}-\dot{e} $
+&% Equation
+$ \mathcal{D} = \mathcal{P}_{s} + \theta\dot{\eta}-\dot{e} $
+&% Units
+1
+%&% Derivation
+%$\mathcal{D}-\frac{1}{\rho\theta}\utilde{q}\cdot\overrightarrow{\nabla}\theta \geq 0 $
+&% Notes
+$\mathcal{D} \geq 0$ and $\eta$ is entropy per mass
+\\[1ex]
+% #40 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Isotropic  Tensors
+&% Purpose
+Second and fourth order
+&% My Symbol
+-
+&% Equation
+$A_{ij}=\alpha I_{ij}$,   $A_{ijkl}=\alpha\delta_{ij}\delta_{kl}+\beta\delta_{ik}\delta_{jl}+\gamma\delta_{il}\delta{jk}$
+&% Equation
+$A_{ij}=\alpha I_{ij}$,   $A_{ijkl}=\alpha\delta_{ij}\delta_{kl}+\beta\delta_{ik}\delta_{jl}+\gamma\delta_{il}\delta{jk}$
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+if $A_{ijkl}$ is minor symmetric $\beta=\gamma$
+\\[1ex]
+% #41 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Isotropic Function
+&% Purpose
+-
+&% My Symbol
+-
+&% Equation
+$\phi(\utilde{\utilde{Q}}\cdot\utilde{v}) = \phi(\utilde{v})\hspace{20pt}for all \utilde{\utilde{Q}}=\utilde{\utilde{Q}}^{-T}$
+&% Equation
+$\phi(\utilde{\utilde{Q}}\cdot\utilde{v}) = \phi(\utilde{v})\hspace{20pt}for all \utilde{\utilde{Q}}=\utilde{\utilde{Q}}^{-T}$
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+For tensors $\phi(\utilde{\utilde{Q}}\cdot\utilde{\utilde{T}}\cdot\utilde{\utilde{Q}}^{T})$
+\\[1ex]
+% #42 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Stress Power
+&% Purpose
+-
+&% My Symbol
+$ \mathcal{P}_{s} $
+&% Equation
+$ \mathcal{P}_{s} = \frac{1}{\rho}\utilde{\utilde{\sigma}}:\utilde{\utilde{L}}=\frac{1}{\rho_{0}}\utilde{\utilde{S}}:\dot{\utilde{\utilde{E}}}$
+&% Equation
+$ \mathcal{P}_{s} = \frac{1}{\rho}\utilde{\utilde{\sigma}}:\utilde{\utilde{L}}=\frac{1}{\rho_{0}}\utilde{\utilde{S}}:\dot{\utilde{\utilde{E}}}$
+&% Units
+$ \frac{Watt}{kg} $
+%&% Derivation
+%$\int\limits_{\partial \Omega}\utilde{v}\cdot\utilde{\utilde{\sigma}}\cdot\utilde{n}dS=\int\limits_{\Omega}(\utilde{v}\cdot\utilde{\utilde{\sigma}})\cdot\overleftarrow{\nabla}dV$
+&% Notes
+1)Product Rule 2)use equation of motion $\utilde{\utilde{\sigma}}\cdot\overleftarrow{\nabla} = \rho\utilde{a}-\rho\utilde{b}$
+\\[1ex]
+% #43 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Mechanical Power
+&% Purpose
+
+&% My Symbol
+$ \mathcal{P}_{m} $
+&% Equation
+$ \mathcal{P}_{m} =\int\limits_{\partial \Omega}\utilde{t}\cdot\utilde{v}dS + \int\limits_{\Omega}\utilde{b}\cdot\utilde{v}\rho dV$
+&% Equation
+$ \mathcal{P}_{m} =\int\limits_{\partial \Omega}\utilde{t}\cdot\utilde{v}dS + \int\limits_{\Omega}\utilde{b}\cdot\utilde{v}\rho dV$
+&% Units
+$ \frac{Watt}{kg} $
+%&% Derivation
+%-
+&% Notes
+ 
+\\[1ex]
+% #44 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Nanson's Relation
+&% Purpose
+Tracks area
+&% My Symbol
+-
+&% Equation
+$ d\utilde{A} = J \utilde{\utilde{F}}^{-T}\cdot d\utilde{A}_{0} \hspace{15pt} dA\utilde{n}=J \utilde{\utilde{F}}^{-T}\cdot\utilde{N} dA_{0}$
+&% Equation
+$ d\utilde{A} = J \utilde{\utilde{F}}^{-T}\cdot d\utilde{A}_{0} \hspace{15pt} dA\utilde{n}=J \utilde{\utilde{F}}^{-T}\cdot\utilde{N} dA_{0}$
+&% Units
+-
+%&% Derivation
+%$ (\utilde{\utilde{F}}\cdot\utilde{u})\times(\utilde{\utilde{F}}\cdot\utilde{v})=\utilde{\utilde{F}}^{c}\cdot(\utilde{u}\times\utilde{v})$
+&% Notes
+let $\utilde{u} = d\utilde{X}^{1}$ and $\utilde{v}=d\utilde{X}^{2}$, $(\utilde{u}\times\utilde{v})=d\utilde{A}_{0}$
+\\[1ex]
+% #44 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Local Equation of Motion
+&% Purpose
+Continuum analog of $F=ma$
+&% My Symbol
+-
+&% Equation
+$ \overrightarrow{\nabla}\cdot\utilde{\utilde{\sigma}}+\rho\utilde{b}=\rho\utilde{a}$
+&% Equation
+$ \overrightarrow{\nabla}\cdot\utilde{\utilde{\sigma}}+\rho\utilde{b}=\rho\utilde{a}$
+&% Units
+-
+%&% Derivation
+%$ \int\limits_{\partial \Omega}\utilde{\utilde{\sigma}}\cdot\utilde{n}dA + \int\limits_{\Omega}\rho\utilde{b}dV=\frac{D}{Dt}\int\limits_{\Omega}\utilde{v}\rho dV$
+&% Notes
+(surface forces)+(body forces) = (rate of momentum)
+\\[1ex]
+% #45 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Continuity
+&% Purpose
+Local form of conservation of mass
+&% My Symbol
+-
+&% Equation
+$ \dot{\rho}+\rho\overrightarrow{\nabla}\cdot\utilde{v}=0 $
+&% Equation
+$ \dot{\rho}+\rho\overrightarrow{\nabla}\cdot\utilde{v}=0 $
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+alternate form: $\rho_{,t}+\overrightarrow{\nabla}\cdot(\rho\utilde{v})=0$
+\\[1ex]
+% #46 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+First Law of Thermodynamics
+&% Purpose
+Conservation of energy
+&% My Symbol
+-
+&% Equation
+$\dot{e}=\frac{1}{\rho}\utilde{\utilde{\sigma}}:\utilde{\utilde{D}}+\xi-\frac{1}{\rho}\overrightarrow{\nabla}\cdot\utilde{q}$
+&% Equation
+$\dot{e}=\frac{1}{\rho}\utilde{\utilde{\sigma}}:\utilde{\utilde{D}}+\xi-\frac{1}{\rho}\overrightarrow{\nabla}\cdot\utilde{q}$
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+$\xi=$`microwave heat', $e=$internal energy per mass, $\utilde{q}=$heat flux
+\\[1ex]
+% #47 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Second Law of Thermodynamics - Local Form
+&% Purpose
+Disorder tends to increase. 
+&% My Symbol
+-
+&% Equation
+$ \dot{\eta} \geq \frac{\xi}{\theta}-\frac{1}{\rho}\overrightarrow{\nabla}\cdot(\frac{\utilde{q}}{\theta})$
+&% Equation
+$ \dot{\eta} \geq \frac{\xi}{\theta}-\frac{1}{\rho}\overrightarrow{\nabla}\cdot(\frac{\utilde{q}}{\theta})$
+&% Units
+-
+%&% Derivation
+%
+&% Notes
+A.K.A. Clausius-Duhem Inequality
+\\[1ex]
+% #01 ----------------------------------------------------------------------
+\\[-1ex]
+% Name
+Traction
+&% Purpose
+-
+&% My Symbol
+$ \tu{t} $
+&% Equation
+$ \tu{t}=\tuu{\sigma}\cdot\tu{n} $
+&% Equation
+$ \tu{t}=\tuu{\sigma}\cdot\tu{n} $
+&% Units
+$ \frac{Force}{Area} $
+%&% Derivation
+%-
+&% Notes
+Cauchy Tetrahedron Argument proves $\tu{t}$ is linear
+\\[1ex]
+% #02 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Eulerian Rate
+&% Purpose
+Rate seen by fixed observer (optical sensor)
+&% My Symbol
+$ \phi_{,t} $
+&% Equation
+$ \phi_{,t}=(\frac{\partial \phi}{\partial t})_{\tu{x}} $
+&% Equation
+$ \phi_{,t}=(\frac{\partial \phi}{\partial t})_{\tu{x}} $
+&% Units
+$ \frac{1}{Second} $
+%&% Derivation
+%-
+&% Notes
+$(\frac{\partial \phi}{\partial t})_{\tu{X}} = (\frac{\partial \phi}{\partial t})_{\tu{x}}+(\frac{\partial \phi}{\partial \tu{x}})_{t}\cdot(\frac{\partial \tu{x}}{\partial t})_{\tu{X}} $
+\\[1ex]
+% #03 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Lagrange Rate/Material Rate
+&% Purpose
+Rate as experienced by discrete particles
+&% My Symbol
+$ \dot{\phi} $
+&% Equation
+$ \dot{\phi} = \frac{D\phi}{Dt} = (\frac{\partial \phi}{\partial t})_{\tu{X}} $
+&% Equation
+$ \dot{\phi} = \frac{D\phi}{Dt} = (\frac{\partial \phi}{\partial t})_{\tu{X}} $
+&% Units
+$ \frac{1}{Second} $
+%&% Derivation
+%-
+&% Notes
+Lagrange rates are the `usual' rates
+\\[1ex]
+% #06 ----------------------------------------------------------------------
+% TODO
+\hline
+\\[-1ex]
+% Name
+Leibniz Theorem
+&% Purpose
+Lemma for Reynold's Transport
+&% My Symbol
+-
+&% Equation
+$\frac{d}{dt}\int\limits_{\Omega(t)}f(\utilde{x},t)dV = \int\limits_{\Omega(t)}\frac{\partial f(\utilde{x},t)}{\partial t}dV + \int\limits_{\Omega(t)}f(\utilde{x},t)\utilde{v}_{x}\cdot\utilde{n}dS$
+&% Equation
+$\frac{d}{dt}\int\limits_{\Omega(t)}f(\utilde{x},t)dV = \int\limits_{\Omega(t)}\frac{\partial f(\utilde{x},t)}{\partial t}dV + \int\limits_{\Omega(t)}f(\utilde{x},t)\utilde{v}_{x}\cdot\utilde{n}dS$
+&% Units
+-
+%&% Derivation
+%-
+&% Notes
+Rate of an integral over a time varying domain. $dS=$ surface velocity.
+\\[1ex]
+
+
+
+
+
+
+% #25 ----------------------------------------------------------------------
+\hline
+\\[-1ex]
+% Name
+Material Rate
+&% Purpose
+-
+&% My Symbol
+$ \dot{\utilde{\utilde{F}}} $
+&% Equation
+$ \dot{\utilde{\utilde{F}}} =(\frac{\partial \utilde{\utilde{F}}}{\partial t})_{\utilde{X}} $
+&% Equation
+$ \dot{\utilde{\utilde{F}}} =(\frac{\partial \utilde{\utilde{F}}}{\partial t})_{\utilde{X}} $
+&% Units
+$ \frac{1}{Second} $
+%&% Derivation
+%-
+&% Notes
+This is the Lagrangian rate (as $\utilde{X}$ is constant)
+\\[1ex]
+
+
+
+
+\hline
+
+
+%\\[-1ex]
+%% Name
+%
+%&% Purpose
+%
+%&% My Symbol
+%$$
+%&% Accepted Symbol
+%$$
+%&% Equation
+%$$
+%&% Units
+%$$
+%%&% Derivation
+%%$$
+%&% Notes
+%
+%\\[1ex]
+\end{tabular}
+\\[1ex]
+Created by M. Scot Swan, 2017
+\end{center}
+\end{document}
